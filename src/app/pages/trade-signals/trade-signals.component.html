@@ -1,1 +1,11 @@
-<p>trade-signals works!</p>
+<h2>GBP/JPY Trade Signals</h2>
+
+<div *ngFor="let signal of signals" class="signal-card">
+  <nz-card [nzTitle]="signal.type + ' Signal'" [nzBordered]="false" style="margin-bottom: 16px;">
+    <p><i nz-icon [nzType]="signal.type === 'Buy' ? 'arrow-up' : 'arrow-down'" [ngStyle]="{ color: signal.type === 'Buy' ? 'green' : 'red' }"></i>
+      {{ signal.type }} GBP/JPY</p>
+    <p>Entry: {{ signal.entry }}</p>
+    <p>Exit: {{ signal.exit }}</p>
+    <p><small>Generated: {{ signal.timestamp | date:'short' }}</small></p>
+  </nz-card>
+</div>

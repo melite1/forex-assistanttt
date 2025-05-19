@@ -1,1 +1,10 @@
-<p>live-market works!</p>
+<h2>GBP/JPY Rate</h2>
+<p *ngIf="gbpJpyRate !== null">1 GBP = {{ gbpJpyRate | number: '1.2-4' }} JPY</p>
+<p *ngIf="gbpJpyRate === null">Loading rate...</p>
+
+<div class="tradingview-widget-container">
+  <div id="tradingview_gbpjpy"></div>
+  <div class="tradingview-widget-copyright">
+    <a href="https://www.tradingview.com/symbols/GBPJPY/" target="_blank">GBP/JPY Chart</a> by TradingView
+  </div>
+</div>

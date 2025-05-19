@@ -1,1 +1,45 @@
-<p>settings works!</p>
+<h2>Settings</h2>
+
+<form (ngSubmit)="saveSettings()" style="max-width: 400px;">
+  <!-- Refresh interval -->
+  <label>Data Refresh Interval (seconds):</label>
+  <nz-input-number
+    [(ngModel)]="settings.refreshInterval"
+    name="refreshInterval"
+    [nzMin]="10"
+    [nzMax]="300"
+    [nzStep]="10"
+    style="width: 100%; margin-bottom: 16px;"
+  ></nz-input-number>
+
+  <!-- Notifications -->
+  <label>Enable Notifications:</label><br />
+  <nz-switch
+    [(ngModel)]="settings.notificationsEnabled"
+    name="notificationsEnabled"
+    style="margin-bottom: 24px;"
+  ></nz-switch>
+
+  <!-- Theme -->
+  <label>Theme:</label>
+  <select
+    class="ant-input"
+    [(ngModel)]="settings.theme"
+    name="theme"
+    style="width: 100%; margin-bottom: 16px;"
+  >
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+  </select>
+
+  <!-- Default pair -->
+  <label>Default Forex Pair:</label>
+  <input
+    nz-input
+    [(ngModel)]="settings.defaultPair"
+    name="defaultPair"
+    style="width: 100%; margin-bottom: 24px;"
+  />
+
+  <button nz-button nzType="primary">Save Settings</button>
+</form>

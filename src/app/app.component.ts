@@ -1,9 +1,11 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { CommonModule } from '@angular/common';
+import { SettingsService } from '../app/services/services/settings.service';
+
 
 @Component({
   selector: 'app-root',
@@ -13,11 +15,31 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   selectedKey = 'live-market';
+  selectedKeyArray: string[] = [this.selectedKey]; 
 
   isCollapsed = false;
   title = 'forex-assistanttt'; // Add the title property
+
+    constructor(private settingsService: SettingsService) {}
+
+
+   ngOnInit(): void {
+    this.selectedKeyArray = [this.selectedKey];
+    if ('Notification' in window) {
+    Notification.requestPermission();
+     const theme = this.settingsService.getSettings().theme;
+  document.body.classList.toggle('dark-theme', theme === 'dark');
+  }
+    // Ensure it's initialized
+  }
+
+  updateSelectedKey(key: string): void {
+    this.selectedKey = key;
+    this.selectedKeyArray = [key];
+  }
+
 
   menu = [
     

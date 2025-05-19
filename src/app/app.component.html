@@ -1,29 +1,29 @@
 <nz-layout>
   <nz-sider [nzWidth]="200" nzTheme="dark">
     <div class="logo">Forex Assistant</div>
-    <nz-menu nzTheme="dark" nzMode="inline" [nzSelectedKeys]="[selectedKey]">
-      <li nz-menu-item [routerLink]="'/live-market'" (click)="selectedKey = 'live-market'">
+    <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed" >
+      <li nz-menu-item [routerLink]="'/live-market'" (click)="updateSelectedKey('live-market')">
         <span nz-icon nzType="bar-chart"></span>
         <span>Live Market</span>
       </li>
-      <li nz-menu-item [routerLink]="'/predictions'" (click)="selectedKey = 'predictions'">
+      <li nz-menu-item [routerLink]="'/predictions'" (click)="updateSelectedKey('predictions')">
         <span nz-icon nzType="line-chart"></span>
         <span>Predictions</span>
       </li>
-      <li nz-menu-item [routerLink]="'/trade-signals'" (click)="selectedKey = 'trade-signals'">
+      <li nz-menu-item [routerLink]="'/trade-signals'" (click)="updateSelectedKey('trade-signals')">
         <span nz-icon nzType="fund"></span>
         <span>Trade Signals</span>
       </li>
-      <li nz-menu-item [routerLink]="'/settings'" (click)="selectedKey = 'settings'">
+      <li nz-menu-item [routerLink]="'/settings'" (click)="updateSelectedKey('settings')">
         <span nz-icon nzType="setting"></span>
         <span>Settings</span>
       </li>
-    </nz-menu>
+    </ul>
   </nz-sider>
 
   <nz-layout>
     <nz-content style="margin: 24px 16px; padding: 24px; background: #fff;">
-      <!-- 🔥 This is where routed pages show up -->
+      
       <router-outlet></router-outlet>
     </nz-content>
   </nz-layout>

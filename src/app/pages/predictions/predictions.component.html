@@ -1,1 +1,23 @@
-<p>predictions works!</p>
+<div *ngIf="errorMessage" class="error-message" style="color: red; margin-top: 10px;">
+  {{ errorMessage }}
+</div>
+
+<!-- Prediction Display -->
+<div>
+  <strong>Current Prediction:</strong> {{ prediction }}
+  <span nz-icon [nzType]="prediction === 'Uptrend' ? 'arrow-up' : prediction === 'Downtrend' ? 'arrow-down' : 'pause'"></span>
+</div>
+<div><strong>Last Updated:</strong> {{ lastUpdated | date:'medium' }}</div>
+
+  <h3>Last 10 Candles (15m)</h3>
+<ul>
+  <li *ngFor="let c of candles">
+    {{ c.time | date:'short' }} - O:{{ c.open }} H:{{ c.high }} L:{{ c.low }} C:{{ c.close }}
+  </li>
+</ul>
+
+<div echarts [options]="chartOptions" class="chart-container" style="height: 400px;"></div>
+
+
+
+
